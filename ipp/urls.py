@@ -1,15 +1,17 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+
 admin.autodiscover()
 import settings
 
 urlpatterns = patterns('',
-    url(r'^', include('labs.urls')),
-    # url(r'^ipp/', include('ipp.foo.urls')),
+                       url(r'lab1', include('lab1.urls')),
+                       url(r'^', include('labs.urls')),
+                       # url(r'^ipp/', include('ipp.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+                       # Uncomment the admin/doc line below to enable admin documentation:
+                       # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+                       # Uncomment the next line to enable the admin:
+                       # url(r'^admin/', include(admin.site.urls)),
 )
