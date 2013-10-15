@@ -30,12 +30,15 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-MEDIA_ROOT = (os.path.join(PROJECT_PATH, '../ipp/public/media'))
+MEDIA_ROOT = (os.path.join(PROJECT_PATH, 'public/media'))
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = (os.path.join(PROJECT_PATH, '../ipp/public/static'))
+STATIC_ROOT = (os.path.join(PROJECT_PATH, 'public/static'))
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ()
+
+STATICFILES_DIRS = (
+    (os.path.join(PROJECT_PATH, '../lab1/static')),
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

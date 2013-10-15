@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>{% block title %} IPP LABS {% endblock title %}</title>
+    {% block css_imports %} {% endblock %}
+
 </head>
 <body>
-{% block content %}
-{% endblock %}
+
+{% block content %} {% endblock %}
+
 </body>
+{% block js_imports %} {% endblock js_imports %}
 </html>
