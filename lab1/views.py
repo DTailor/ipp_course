@@ -1,20 +1,37 @@
 from annoying.decorators import render_to
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from subprocess import call
+import json
 
 
 @render_to('lab1/index.html')
 def main(request):
     return {}
 
-
+@csrf_exempt
 @render_to('lab1/index.html')
 def task1(request):
-    command = ["youtube-dl", "-f", "5", "--output", "tmp/%(title)s.%(ext)s"]
-    data = request.GET
-    video_url = data.get('url')
+    command = ["youtube-dl", "-f", "17", "--output", "tmp/%(title)s.%(ext)s"]
+    get_data = request.GET
+    post_data = request.POST
+    # Single video download
+    video_url = get_data.get('url')
     if video_url:
-        command.append(video_url)
-        process = call(command)
+        download_command = command[:]
+        download_command.append(video_url)
+        process = call(download_command)
         return HttpResponse('ok')
+
+    # Batch downloading
+    videos_url = post_data.get('links')
+    if videos_url:
+        videos_url = json.loads(videos_url)
+        for video_url in videos_url['url']:
+            download_command = command[:]
+            download_command.append(video_url)
+            process = call(download_command)
+        return HttpResponse('ok')
+
+
     return {}
