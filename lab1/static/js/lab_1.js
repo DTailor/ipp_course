@@ -68,4 +68,54 @@ $(document).ready(function () {
 
     });
 
+//    Task 1_3
+
+    function task3() {
+        console.log('Fire up batch download');
+        if (!$.isEmptyObject(yt_links)) {
+            $.ajax({
+                url: "task1/",
+                type: "POST",
+                data: {'cached_links': JSON.stringify(yt_links)},
+                dataType: 'json',
+                error: function () {
+                    caching_proxy_on = false;
+                    yt_links = {};
+                },
+                success: function (rsp) {
+                    console.log(rsp);
+                    caching_proxy_on = false;
+                    yt_links = {};
+                }
+            });
+        } else {
+            console.log('sending canceled');
+        }
+    }
+
+    var caching_links = {};
+    var yt_links = {};
+    var caching_proxy_on = false;
+
+
+    $('#problem_1_3 > li').each(function () {
+        $(this).click(function () {
+            var item_index = $(this).index();
+            var video_url = $(this).attr('data-url');
+
+            if (caching_links[item_index] === undefined) {
+                caching_links[item_index] = false;
+                yt_links[item_index] = video_url;
+                console.log('link added');
+            }
+
+            if (!caching_proxy_on) {
+                caching_proxy_on = true;
+                setTimeout(task3, 1000);
+            }
+
+        })
+
+    });
+
 });

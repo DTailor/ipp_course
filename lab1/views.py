@@ -9,6 +9,7 @@ import json
 def main(request):
     return {}
 
+
 @csrf_exempt
 @render_to('lab1/index.html')
 def task1(request):
@@ -33,5 +34,18 @@ def task1(request):
             process = call(download_command)
         return HttpResponse('ok')
 
+    # Cached links
+
+    videos_url = post_data.get('cached_links')
+    if videos_url:
+        results = dict()
+        videos_url = json.loads(videos_url)
+        for index, video_url in videos_url.iteritems():
+            download_command = command[:]
+            download_command.append(video_url)
+            process = call(download_command)
+            results[index] = True
+
+        return HttpResponse(json.dumps(results))
 
     return {}
