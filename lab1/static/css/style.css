@@ -1,3 +1,8 @@
 #problem_1_1 li, #problem_1_2 li, #problem_1_3 li {
     cursor: pointer;
 }
+
+.player {
+    float: left;
+    margin-right: 10px;
+}

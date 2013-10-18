@@ -1,7 +1,22 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} Lab 1 Task 2 {% endblock %}
 
 {% block content %}
+    <h1>Problem 2</h1>
+    <h2>Scoreboard</h2>
+    <h3 id="player_turn">Waiting player to start</h3>
+    <div class="player">Player1</div><div class="player_score"  id="p1">0</div>
+    <div class="player">Player2</div><div class="player_score"  id="p2">0</div>
 
+{% endblock %}
+
+{% block js_imports %}
+    <script src="{% static 'js/jquery-2.0.3.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/lab_1_2.js' %}" type="text/javascript"></script>
+    {#    <script src="{% static 'js/jquery-2.0.3.min.map' %}" type="text/javascript"></script>#}
+{% endblock %}
+
+{% block css_imports %}
+    <link href="{{ STATIC_URL }}css/style.css" type="text/css" rel="stylesheet">
 {% endblock %}
