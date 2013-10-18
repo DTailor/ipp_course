@@ -11,7 +11,7 @@ def main(request):
 
 
 @csrf_exempt
-@render_to('lab1/index.html')
+@render_to('lab1/task1.html')
 def task1(request):
     command = ["youtube-dl", "-f", "17", "--output", "tmp/%(title)s.%(ext)s"]
     get_data = request.GET
@@ -35,7 +35,6 @@ def task1(request):
         return HttpResponse('ok')
 
     # Cached links
-
     videos_url = post_data.get('cached_links')
     if videos_url:
         results = dict()
@@ -47,5 +46,8 @@ def task1(request):
             results[index] = True
 
         return HttpResponse(json.dumps(results))
+    return {}
 
+@render_to('lab1/task2.html')
+def task2(request):
     return {}

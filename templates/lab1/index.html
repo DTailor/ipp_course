@@ -4,36 +4,9 @@
 
 {% block title %} Lab 1 {% endblock %}
 {% block content %}
-    <h1>Problem 1</h1>
-    {% for i in '123' %}
-        <h3>Task {{ i }}</h3>
-        <ul id="problem_1_{{ i }}">
-            <li data-url="https://www.youtube.com/watch?v=5Jdr_qMQFlM">Neutral Milk Hotel - In The Aeroplane Over The
-                Sea
-            </li>
-            <li data-url="https://www.youtube.com/watch?v=IKniXABsUeE">Ratat - Wildcat</li>
-            <li data-url="https://www.youtube.com/watch?v=PXGljpsidd4">Asdfg Movies</li>
-            <li data-url="https://www.youtube.com/watch?v=yGpuC5I3jB4">Ponytail - Beg Waves</li>
-            <li data-url="https://www.youtube.com/watch?v=Jpz_gUyImhw">The National - Graceless</li>
-            <li data-url="https://www.youtube.com/watch?v=lZpTnLYfBlc">Edward Sharpe and the Magnetic Zeros - If I Were
-                Free
-            </li>
-            <li data-url="https://www.youtube.com/watch?v=B9dSYgd5Elk">MGMT - Time To Pretend</li>
-            <li data-url="https://www.youtube.com/watch?v=uENunBP8Rfg">The Sound Defects</li>
-            <li data-url="https://www.youtube.com/watch?v=fW5XTeuxFfc">65daysofstatic - 23kid</li>
-            <li data-url="https://www.youtube.com/watch?v=SGSij0-cljI">Cloud Control - Dojo Rising</li>
-        </ul>
-    {% endfor %}
+    <ul>
+        <li><a href="{% url 'task1' %}">Task 1</a></li>
+        <li><a href="{% url 'task2' %}">Task 2</a></li>
+    </ul>
 
-{% endblock %}
-
-
-{% block js_imports %}
-    <script src="{% static 'js/jquery-2.0.3.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'js/lab_1.js' %}" type="text/javascript"></script>
-    {#    <script src="{% static 'js/jquery-2.0.3.min.map' %}" type="text/javascript"></script>#}
-{% endblock %}
-
-{% block css_imports %}
-    <link href="{{ STATIC_URL }}css/style.css" type="text/css" rel="stylesheet">
 {% endblock %}
