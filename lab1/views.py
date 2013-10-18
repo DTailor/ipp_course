@@ -48,6 +48,12 @@ def task1(request):
         return HttpResponse(json.dumps(results))
     return {}
 
+
 @render_to('lab1/task2.html')
 def task2(request):
+    return {}
+
+
+@render_to('lab1/task3.html')
+def task3(request):
     return {}
